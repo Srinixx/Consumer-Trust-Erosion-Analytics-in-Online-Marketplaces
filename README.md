@@ -1,19 +1,3 @@
-Perfect 👍
-
-Here is a **README.md file with proper Markdown formatting**, including **code blocks and output sections**. You can directly copy this into a file named `README.md`.
-
-
-
----
-
-
-
-# ✅ README.md
-
-
-
-```markdown
-
 # YOLOv8 Person & PPE Detection System
 
 
@@ -251,7 +235,6 @@ cv2.destroyAllWindows()
 Srinivas V
 
 
-
 ---
 
 
@@ -261,32 +244,4 @@ Srinivas V
 
 
 Educational use only.
-
-
-
-```
-
-
-
----
-
-
-
-If you want, tell me:
-
-
-
-✔ Your **project name**
-
-✔ Whether it's **image / video / webcam**
-
-✔ Your **model accuracy**
-
-
-
-I can customize this README exactly for your project 💯
-
-::contentReference[oaicite:0]{index=0}
-
-```
 
