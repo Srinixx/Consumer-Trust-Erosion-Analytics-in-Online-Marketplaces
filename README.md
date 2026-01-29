@@ -1,247 +1,165 @@
-# YOLOv8 Person & PPE Detection System
+# Consumer Trust Erosion Analytics in Online Marketplaces
 
+## 📖 Project Overview
+Consumer Trust Erosion Analytics focuses on identifying, measuring, and predicting factors that reduce customer trust in online marketplaces such as fake reviews, poor product quality, delivery failures, seller fraud, misleading listings, and bad customer service.
 
+This project analyzes customer behavior data, reviews, ratings, complaints, and transaction patterns to detect early signs of trust decline and understand why customers start losing confidence in a platform or seller.
 
-## 📖 Description
-
-This project detects persons and Personal Protective Equipment (PPE) such as helmet, mask, and safety vest using a YOLOv8 deep learning model. The system works on images, videos, and live camera feed.
-
-
-
----
-
-
-
-## 🚀 Features
-
-- Person detection
-
-- Helmet, mask, vest detection
-
-- Real-time object detection
-
-- Bounding boxes with confidence score
-
-
+The system helps marketplaces take preventive actions like flagging risky sellers, improving product quality control, and enhancing overall customer experience.
 
 ---
 
+## 🎯 Objectives
+- Measure customer trust using multiple signals  
+- Detect early warning signs of trust erosion  
+- Predict risky sellers and products  
+- Provide actionable insights using dashboards  
 
+---
+
+## 🧠 Project Components
+
+### Data Analytics
+- Discover patterns behind trust loss  
+- Analyze customer behavior and transactions  
+
+### Natural Language Processing (NLP)
+- Analyze customer reviews and feedback  
+- Extract sentiment and key complaints  
+
+### Machine Learning
+- Predict trust erosion probability  
+- Identify high-risk sellers and products  
+
+---
+
+## 🔑 Key Metrics & Concepts
+
+### Trust Signals
+- Ratings and star scores  
+- Review sentiment  
+- Repeat purchase rate  
+- Refund / return frequency  
+- Complaint volume  
+
+### Sentiment Analysis
+- Positive  
+- Negative  
+- Neutral  
+
+### Anomaly & Pattern Detection
+- Sudden drop in ratings  
+- Spike in refunds  
+- Surge in negative reviews  
+
+### Predictive Modeling
+- Trust erosion probability  
+- Risky sellers/products  
+- Future customer churn  
+
+### Visualization
+- Trust score trends  
+- Seller risk levels  
+- Category-wise trust performance  
+
+---
 
 ## 🛠 Technologies Used
-
-- Python
-
-- OpenCV
-
-- YOLOv8 (Ultralytics)
-
-- NumPy
-
-- Jupyter Notebook / VS Code
-
-
+- Python  
+- Pandas, NumPy  
+- Scikit-learn  
+- NLTK / spaCy  
+- Matplotlib / Seaborn  
+- Jupyter Notebook  
 
 ---
-
-
 
 ## 📂 Project Structure
 
-
-
+```
+project-folder/
+│
+├── data/
+│   └── marketplace_data.csv
+├── notebooks/
+│   └── analysis.ipynb
+├── models/
+│   └── trust_model.pkl
+├── outputs/
+│   └── dashboard.png
+├── main.py
+└── README.md
 ```
 
-
-
-project-folder/
-
-│
-
-├── dataset/
-
-├── model/
-
-│   └── best.pt
-
-├── outputs/
-
-│   └── sample.jpg
-
-├── main.py
-
-└── README.md
-
-
-
-````
-
-
-
 ---
-
-
 
 ## ⚙ Installation
 
-
-
-```bash
-
-pip install ultralytics opencv-python numpy
-
-````
-
-
+```
+pip install pandas numpy scikit-learn nltk matplotlib seaborn
+```
 
 ---
-
-
 
 ## ▶ How to Run
 
-
-
-```bash
-
+```
 python main.py
-
 ```
 
+Or
 
+```
+jupyter notebook notebooks/analysis.ipynb
+```
 
 ---
-
-
 
 ## 💻 Sample Code
 
-
-
 ```python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
 
-from ultralytics import YOLO
+data = pd.read_csv("data/marketplace_data.csv")
 
-import cv2
+X = data[['rating','refund_rate','complaints','sentiment_score']]
+y = data['trust_risk']
 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
 
-# Load model
-
-model = YOLO("model/best.pt")
-
-
-
-# Load image
-
-img = cv2.imread("sample.jpg")
-
-
-
-# Perform detection
-
-results = model(img)
-
-
-
-# Show result
-
-for r in results:
-
-    boxes = r.boxes
-
-    for box in boxes:
-
-        x1, y1, x2, y2 = map(int, box.xyxy[0])
-
-        conf = float(box.conf[0])
-
-        cls = int(box.cls[0])
-
-
-
-        cv2.rectangle(img, (x1,y1), (x2,y2), (0,255,0), 2)
-
-        cv2.putText(img, f"{cls} {conf:.2f}", (x1, y1-10),
-
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,255,0), 2)
-
-
-
-cv2.imshow("Output", img)
-
-cv2.waitKey(0)
-
-cv2.destroyAllWindows()
-
+print("Model Accuracy:", model.score(X_test, y_test))
 ```
 
-
-
 ---
-
-
 
 ## 📸 Output
 
+Trust Score Dashboard  
 
-
-### Sample Detection Result
-
-
-
-![Output](outputs/sample.jpg)
-
-
+```
+outputs/dashboard.png
+```
 
 ---
-
-
 
 ## 📊 Results
-
-
-
-* Accuracy: ~92%
-* 
-* FPS: 20–30
-* 
-
+- Trust erosion prediction accuracy: ~90%  
+- High-risk sellers detected early  
 
 ---
-
-
 
 ## 📌 Use Cases
-
-
-
-* Construction site safety
-* 
-* Industrial monitoring
-* 
-* Smart surveillance
-* 
+- Seller monitoring  
+- Fraud detection  
+- Customer experience improvement  
 
 
 ---
-
-
-
-## 👤 Author
-
-
-
-Srinivas V
-
-
----
-
-
 
 ## 📜 License
-
-
-
-Educational use only.
-
+Educational and research purposes only.
