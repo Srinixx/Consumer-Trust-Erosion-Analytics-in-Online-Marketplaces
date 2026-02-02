@@ -141,8 +141,6 @@ print("Model Accuracy:", model.score(X_test, y_test))
 
 Trust Score Dashboard  
 
-```
-
 ![ss1](ss1.jpeg)
 ![ss2](ss2.jpeg)
 ![ss3](ss3.jpeg)
